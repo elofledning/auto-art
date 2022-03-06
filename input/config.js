@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-const width = 1000;
-const height = 1000;
+const width = 300;
+const height = 300;
 const dir = __dirname;
 
 const rarity = [
@@ -55,29 +55,30 @@ const layers = [
     },
     {
         id: 2,
-        name: "ball",
-        location: `${dir}/ball/`,
-        elements: getElements(`${dir}/ball/`),
+        name: "eyes",
+        location: `${dir}/eyes/`,
+        elements: getElements(`${dir}/eyes/`),
         position: { x: 0, y: 0},
         size: { width, height },
     },
     {
         id: 3,
-        name: "star",
-        location: `${dir}/star/`,
-        elements: getElements(`${dir}/star/`),
+        name: "mouth",
+        location: `${dir}/mouth/`,
+        elements: getElements(`${dir}/mouth/`),
         position: { x: 0, y: 0},
         size: { width, height },
     },
     {
         id: 4,
-        name: "virus",
-        location: `${dir}/virus/`,
-        elements: getElements(`${dir}/virus/`),
+        name: "beard",
+        location: `${dir}/beard/`,
+        elements: getElements(`${dir}/beard/`),
         position: { x: 0, y: 0},
         size: { width, height },
     }    
 ];
 
+console.log(layers);
 
 module.exports = {layers, width, height};

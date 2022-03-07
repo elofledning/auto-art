@@ -2,11 +2,12 @@ const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const canvas = createCanvas(300, 300);
 const ctx = canvas.getContext("2d");
-const {layers, width, height} = require("./input/config.js");
-const edition = 10;
+const {layers, width, height} = require("./src/config.js");
+const edition = 1;
+const outputDir = "C:\\Workspace\\auto-art-files\\output\\";
 
 const saveLayer = (_canvas, _edition) => {
-    fs.writeFileSync(`./output/${_edition}.png`, _canvas.toBuffer("image/png"));
+    fs.writeFileSync(`${outputDir}${_edition}.png`, _canvas.toBuffer("image/png"));
     console.log("Image created");
 };
 

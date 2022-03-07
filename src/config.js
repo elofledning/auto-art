@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const width = 300;
 const height = 300;
-const dir = __dirname;
+const dir = "C:\\Workspace\\auto-art-files\\input";//__dirname;
 
 const rarity = [
     { key: "", val: "original" },

@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-const width = 300;
-const height = 300;
+const width = 30;
+const height = 30;
 const dir = "C:\\Workspace\\auto-art-files\\input";//__dirname;
 
 const rarity = [
@@ -76,7 +76,23 @@ const layers = [
         elements: getElements(`${dir}/beard/`),
         position: { x: 0, y: 0},
         size: { width, height },
-    }    
+    },
+    {
+        id: 5,
+        name: "piercing",
+        location: `${dir}/piercing/`,
+        elements: getElements(`${dir}/piercing/`),
+        position: { x: 0, y: 0},
+        size: { width, height },
+    },
+    {
+        id: 6,
+        name: "hair",
+        location: `${dir}/hair/`,
+        elements: getElements(`${dir}/hair/`),
+        position: { x: 0, y: 0},
+        size: { width, height },
+    }                
 ];
 
 console.log(layers);

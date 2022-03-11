@@ -79,9 +79,9 @@ const layers = [
     },
     {
         id: 5,
-        name: "piercing",
-        location: `${dir}/piercing/`,
-        elements: getElements(`${dir}/piercing/`),
+        name: "jewelery",
+        location: `${dir}/jewelery/`,
+        elements: getElements(`${dir}/jewelery/`),
         position: { x: 0, y: 0},
         size: { width, height },
     },
@@ -94,7 +94,5 @@ const layers = [
         size: { width, height },
     }                
 ];
-
-console.log(layers);
 
 module.exports = {layers, width, height};

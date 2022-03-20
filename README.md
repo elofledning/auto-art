@@ -23,9 +23,10 @@ npm install
 tsc
 ```
 
-# Run node server
+# Run node server (add number of editions to command)
 ```
-node built/local/index.js
+node built/local/index.js (default to 1 edition)
+node built/local/index.js 10 (guess what, creates 10 editions of images)
 ```
 
 # Voila! check output folder for random images

@@ -1,4 +1,4 @@
-const _fs = require("fs");
+import * as _fs from "fs";
 
 export const width = 30;
 export const height = 30;

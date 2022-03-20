@@ -11,10 +11,10 @@ const edition = myArgs.length > 0 ? Number(myArgs[0]) : 1;
 const artInEdition = 9;
 const outputDir = "C:\\Workspace\\auto-art-files\\output\\";
 
-var metadata = [];
-var attributes = [];
-var hash = [];
-var decodedHash = [];
+let metadata = [];
+let attributes = [];
+let hash = [];
+let decodedHash = [];
 
 const saveLayer = (_canvas, _edition) => {
     fs.writeFileSync(`${outputDir}${_edition}.png`, _canvas.toBuffer("image/png"));

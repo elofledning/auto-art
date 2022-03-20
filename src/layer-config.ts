@@ -1,7 +1,8 @@
-const fs = require("fs");
+const _fs = require("fs");
 
-const width = 30;
-const height = 30;
+export const width = 30;
+export const height = 30;
+
 const dir = "C:\\Workspace\\auto-art-files\\input";//__dirname;
 
 const rarity = [
@@ -31,7 +32,7 @@ const addRarity = _str => {
   };
 
 const getElements = path => {
-    return fs
+    return _fs
       .readdirSync(path)
       .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
       .map((i, index) => {
@@ -44,7 +45,7 @@ const getElements = path => {
       });
   };
 
-const layers = [
+export const layers = [
     {
         id: 1,
         name: "background",
@@ -94,5 +95,3 @@ const layers = [
         size: { width, height },
     }                
 ];
-
-module.exports = {layers, width, height};

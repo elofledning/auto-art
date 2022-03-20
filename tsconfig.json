@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noImplicitAny": false,
+      "removeComments": false,
+      "preserveConstEnums": true,
+      "outDir": "built/local/",
+      "sourceMap": true
+    },
+    "include": ["src/**/*", "index.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+  }

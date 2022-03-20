@@ -1,12 +1,16 @@
-const fs = require("fs");
 const myArgs = process.argv.slice(2);
-const { createCanvas, loadImage } = require("canvas");
-const {layers, width, height} = require("./src/config.js");
+
+//const fs = require("fs");
+import * as fs from "fs";
+import {createCanvas, loadImage} from "canvas";
+import {layers, width, height} from "./src/layer-config";
+
 const canvas = createCanvas(width*3, height*3);
 const ctx = canvas.getContext("2d");
 const edition = myArgs.length > 0 ? Number(myArgs[0]) : 1;
 const artInEdition = 9;
 const outputDir = "C:\\Workspace\\auto-art-files\\output\\";
+
 var metadata = [];
 var attributes = [];
 var hash = [];

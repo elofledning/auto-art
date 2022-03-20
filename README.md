@@ -1,4 +1,4 @@
-#AUTO ART
+# AUTO ART
 Automated generation of random images based on layers
 
 # Find the output and input folders 

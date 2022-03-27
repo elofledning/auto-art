@@ -4,6 +4,8 @@ import * as fs from "fs";
 import {createCanvas, loadImage} from "canvas";
 import {layers, width, height} from "./src/layer-config";
 import * as metadata from "./src/metadata";
+import {Layer, Element, Size} from "./src/types";
+
 
 const canvas = createCanvas(width*3, height*3);
 const ctx = canvas.getContext("2d");
@@ -41,19 +43,20 @@ const addAttributes = (_element, _layer) => {
 };
 
 for(let i=1; i <= edition; i++){
-    for(let j=0; j <= artInEdition;j++){
-        layers.forEach(layer => {
-            let x = j%3*30;
-            
+    for(let j=0; j <= artInEdition; j++){
+        let _layers = layers();
+        for(let l=0; l<_layers.length; l++){
+            let layer = _layers[l];
+            let x = j%3*layer.size.width;
             let y = 0;
 
             if(j>2 && j<6){
-                y = 30;
+                y = layer.size.width;
             }else if(j>5){
-                y = 60;
+                y = 2*layer.size.width;
             }
-            drawLayer(layer, i, x, y);          
-        });
+            drawLayer(layer, i, x, y);       
+        }
     }
     metadata.addMetadata(i);
     console.log("creating edition "+i);

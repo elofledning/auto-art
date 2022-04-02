@@ -1,8 +1,8 @@
 import * as _fs from "fs";
 import {Layer, Element, Size} from "./types";
 
-export const width = 30;
-export const height = 30;
+export const width = 1800;
+export const height = 1800;
 export const dir = "C:\\Workspace\\auto-art-files\\input";
 
 const rarity = [

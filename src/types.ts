@@ -18,9 +18,9 @@ export class Element {
     id: number;
     name: string;
     fileName: string;
-    rarity: string;
+    rarity: number;
 
-    constructor(id: number, name: string, fileName: string, rarity: string){
+    constructor(id: number, name: string, fileName: string, rarity: number){
         this.id = id;
         this.name = name;
         this.fileName = fileName;

@@ -1,25 +1,19 @@
 import * as _fs from "fs";
 import {Layer, Element, Size} from "./types";
 
-export const width = 1800;
-export const height = 1800;
-export const dir = "C:\\Workspace\\auto-art-files\\input";
-
-const rarity = [
-  { key: "", val: "original" },
-  { key: "_r", val: "rare" },
-  { key: "_sr", val: "super rare" },
-];
+export const width = 900;
+export const height = 900;
+export const baseInputDir = "C:\\Workspace\\auto-art-files\\input";
 
 export const layers = () => {
   let id = 1;
   let result = [];
-  const files = _fs.readdirSync(dir);
+  const files = _fs.readdirSync(baseInputDir);
 
-  files.forEach(file => {
-    const location = `${dir}\\${file}\\`;
-    if(_fs.lstatSync(location).isDirectory() ){
-      result.push(new Layer(id, file, location, getElements(location), new Size(width, height))); 
+  files.forEach(layerFolder => {
+    const path = `${baseInputDir}\\${layerFolder}\\`;
+    if(_fs.lstatSync(path).isDirectory() ){
+      result.push(new Layer(id, layerFolder, path, getElements(path), new Size(width, height))); 
       id++;     
     }   
   });
@@ -28,30 +22,37 @@ export const layers = () => {
 };
 
 const getElements = path => {
-  return _fs
-    .readdirSync(path)
-    .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
-    .map((i, index) => {
-      return new Element(index + 1,cleanName(i), i, addRarity(i));
-    });
+  const result: Array<Element> = [];
+  
+  _fs
+  .readdirSync(path)
+  .forEach((value, index) => {
+    const name = cleanName(value);
+    const itemRarity:number = addRarity(value);
+    
+    //add as many elements as the rarity number in filename weight indicates
+    for(let i=0; i<itemRarity; i++){
+      result.push(new Element(index + 1, name, value, itemRarity));
+    }
+  }) 
+
+  return result;
+
 };
 
 const addRarity = _str => {
-    let itemRarity;
+  try{
+    const _strArray: Array<string> = _str.split(/[#.]+/);
+    return Number(_strArray[1]);
   
-    rarity.forEach((r) => {
-      if (_str.includes(r.key)) {
-        itemRarity = r.val;
-      }
-    });
+  }catch(error){
+    console.error(`Failed parsing: ${_str}, returning default value of 1 rarity`);
+    return 1;
+  }
+  return 1;
   
-    return itemRarity;
   };
   
 const cleanName = _str => {
-  let name = _str.slice(0, -4);
-  rarity.forEach((r) => {
-    name = name.replace(r.key, "");
-  });
-  return name;
+  return _str.split('#')[0];
 };

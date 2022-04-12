@@ -17,6 +17,8 @@ index.ts ==> const outputDir = "C:\\Workspace\\auto-art-files\\output\\";
 ```
 
 # Add layered images to input folder
+Organise subfolder with name of layer like eg. 'background' with layer images files like 'background#20.png'
+The #20 in above example will yield a 20% of being animated of alle files in 'background' folder has a weight distribution summing to 100%
 
 # Install dependencies
 ```

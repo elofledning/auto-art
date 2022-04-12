@@ -18,7 +18,7 @@ const saveLayer = (_canvas, _edition) => {
 };
 
 const drawLayer = async (_layer, _edition, _offsetX, _offsetY) => {
-    let element = _layer.elements[Math.floor(Math.random() * _layer.elements.length)];
+    let element = _layer.elements[Math.floor(Math.random() * _layer.elements.length)]; 
     addAttributes(element, _layer);
     const image = await loadImage(`${_layer.location}${element.fileName}`);
     ctx.drawImage(
@@ -43,7 +43,7 @@ const addAttributes = (_element, _layer) => {
 };
 
 for(let i=1; i <= edition; i++){
-    for(let j=0; j <= artInEdition; j++){
+    for(let j=0; j <= artInEdition-1; j++){
         let _layers = layers();
         for(let l=0; l<_layers.length; l++){
             let layer = _layers[l];

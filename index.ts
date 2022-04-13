@@ -14,8 +14,9 @@ const artInEdition = 9; //Andy Warhol style
 const outputDir = "C:\\Workspace\\auto-art-files\\output\\";
 
 const drawLayer = async (_layer:Layer, _edition:number, _offsetX:number, _offsetY:number) => {
-    let element = _layer.elements[Math.floor(Math.random() * _layer.elements.length)]; 
+    const element = _layer.elements[Math.floor(Math.random() * _layer.elements.length)]; 
     addAttributes(element, _layer);
+    
     const image = await loadImage(`${_layer.location}${element.fileName}`);
     ctx.drawImage(
         image, 
@@ -32,7 +33,7 @@ const saveLayer = (_canvas:Canvas, _edition:number) => {
 };
 
 const addAttributes = (_element:Element, _layer:Layer) => {
-    let tempAttributes = {
+    const tempAttributes = {
         id: _element.id,
         layer: _layer.name,
         name: _element.name,
@@ -43,9 +44,9 @@ const addAttributes = (_element:Element, _layer:Layer) => {
 
 for(let i=1; i <= edition; i++){
     for(let j=0; j <= artInEdition-1; j++){
-        let _layers = layers();
+        const _layers = layers();
         for(let l=0; l<_layers.length; l++){
-            let layer = _layers[l];
+            const layer = _layers[l];
             let x = j%3*layer.size.width;
             let y = 0;
 

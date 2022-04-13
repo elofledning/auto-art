@@ -7,7 +7,7 @@ export const baseInputDir = "C:\\Workspace\\auto-art-files\\input";
 
 export const layers = () => {
   let id = 1;
-  let result:Array<Layer> = [];
+  const result:Array<Layer> = [];
   const files = _fs.readdirSync(baseInputDir);
 
   files.forEach(layerFolder => {

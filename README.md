@@ -25,15 +25,10 @@ The #20 in above example will yield a 20% of being animated of alle files in 'ba
 npm install
 ```
 
-# TS Compile
-```
-tsc
-```
-
 # Run node server (add number of editions to command)
 ```
-node built/local/index.js (defaults to creating 1 edition)
-node built/local/index.js 10 (creates 10 editions of images)
+npx ts-node index.ts (defaults to creating 1 edition)
+npx ts-node index.ts 10 (creates 10 editions of images)
 ```
 
 # Voila! check output folder for random images

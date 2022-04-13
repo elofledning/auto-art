@@ -3,7 +3,6 @@ const myArgs = process.argv.slice(2);
 import * as fs from "fs";
 import {Canvas, createCanvas, loadImage} from "canvas";
 import {layers, width, height} from "./src/layer-config";
-import * as metadata from "./src/metadata";
 import {Layer, Element, Size} from "./src/types";
 
 
@@ -15,7 +14,6 @@ const outputDir = "C:\\Workspace\\auto-art-files\\output\\";
 
 const drawLayer = async (_layer:Layer, _edition:number, _offsetX:number, _offsetY:number) => {
     const element = _layer.elements[Math.floor(Math.random() * _layer.elements.length)]; 
-    addAttributes(element, _layer);
     
     const image = await loadImage(`${_layer.location}${element.fileName}`);
     ctx.drawImage(
@@ -32,15 +30,7 @@ const saveLayer = (_canvas:Canvas, _edition:number) => {
     fs.writeFileSync(`${outputDir}${_edition}.png`, _canvas.toBuffer("image/png"));
 };
 
-const addAttributes = (_element:Element, _layer:Layer) => {
-    const tempAttributes = {
-        id: _element.id,
-        layer: _layer.name,
-        name: _element.name,
-        rarity: _element.rarity
-    }
-    metadata.addAttributes(tempAttributes, _layer.id, _element.id);
-};
+
 
 for(let i=1; i <= edition; i++){
     for(let j=0; j <= artInEdition-1; j++){
@@ -58,11 +48,12 @@ for(let i=1; i <= edition; i++){
             drawLayer(layer, i, x, y);       
         }
     }
-    metadata.addMetadata(i);
     console.log("creating edition "+i);
 }
 
+/* To be used for metadata json file
 fs.readFile(`${outputDir}_metadata.json`, (err, data) => {
     if(err) throw err;
     fs.writeFileSync(`${outputDir}_metadata.json`, JSON.stringify(metadata));
 })
+*/

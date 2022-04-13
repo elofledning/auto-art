@@ -7,11 +7,11 @@ export const baseInputDir = "C:\\Workspace\\auto-art-files\\input";
 
 export const layers = () => {
   let id = 1;
-  let result = [];
+  let result:Array<Layer> = [];
   const files = _fs.readdirSync(baseInputDir);
 
   files.forEach(layerFolder => {
-    const path = `${baseInputDir}\\${layerFolder}\\`;
+    const path:_fs.PathLike = `${baseInputDir}\\${layerFolder}\\`;
     if(_fs.lstatSync(path).isDirectory() ){
       result.push(new Layer(id, layerFolder, path, getElements(path), new Size(width, height))); 
       id++;     
@@ -21,7 +21,7 @@ export const layers = () => {
   return result;
 };
 
-const getElements = path => {
+const getElements = (path:string) => {
   const result: Array<Element> = [];
   
   _fs
@@ -40,7 +40,7 @@ const getElements = path => {
 
 };
 
-const addRarity = _str => {
+const addRarity = (_str:string) => {
   try{
     const _strArray: Array<string> = _str.split(/[#.]+/);
     return Number(_strArray[1]);
@@ -53,6 +53,6 @@ const addRarity = _str => {
   
   };
   
-const cleanName = _str => {
+const cleanName = (_str:string) => {
   return _str.split('#')[0];
 };

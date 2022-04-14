@@ -30,10 +30,8 @@ const saveLayer = (_canvas:Canvas, _edition:number) => {
     fs.writeFileSync(`${outputDir}${_edition}.png`, _canvas.toBuffer("image/png"));
 };
 
-
-
 for(let i=1; i <= edition; i++){
-    for(let j=0; j <= artInEdition-1; j++){
+    for(let j=0; j < artInEdition; j++){
         const _layers = layers();
         for(let l=0; l<_layers.length; l++){
             const layer = _layers[l];

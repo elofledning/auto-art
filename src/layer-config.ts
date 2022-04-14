@@ -29,7 +29,6 @@ const getElements = (path:string) => {
   .forEach((value, index) => {
     const name = cleanName(value);
     const itemRarity:number = addRarity(value);
-    
     //add as many elements as the rarity number in filename weight indicates
     for(let i=0; i<itemRarity; i++){
       result.push(new Element(index + 1, name, value, itemRarity));
